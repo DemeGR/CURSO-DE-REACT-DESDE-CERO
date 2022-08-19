@@ -44,14 +44,17 @@
         const  $app = document.getElementById("app");
         const useState = React.useState
 
-        const Avatar = props =>{
+        const Avatar = ({/*los {} destruturan*/id,name="👷‍♀️",size}) =>{
             const [enabled, setEnabled] = useState(true);
-            const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
+
+            if(!id) return <img src="https://randomuser.me/api/portraits/lego/6.jpg"/>;
+
+            const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
 
             let pictureClassName = "";
-            if(props.size === "small"){
+            if(size === "small"){
                 pictureClassName = "is-small";
-            }else if(props.size === "large"){
+            }else if(size === "large"){
                 pictureClassName = "is-large";
             }
             const imgClassName = enabled ? "" : "disabled"; 
@@ -66,17 +69,20 @@
                     className={imgClassName} 
                     src={src}
                     />
-                    <strong>{props.name}</strong>   
+                    <strong>{name}</strong>   
             </picture>
             );
-
         };
+
+        Avatar.defaultProps = {
+            name:"👷‍♀️"
+        }
 
         ReactDOM.render(
             <div>
-                <Avatar id={10} name="Ana" size="small"/>
-                <Avatar id={11} name="JSXLady"/> 
-                <Avatar id={12} name="Rodriguez" size="large"/> 
+                <Avatar /> 
+                <Avatar id={13} size="large"/> 
+                <Avatar id={13} size="large" name ="Maria"/> 
             </div>
             ,$app
         );
