@@ -12,10 +12,19 @@
             text-align: center;
             width: 100px;
         }
+
+        picture.is-small{
+            width: 50px;
+        }
+
+        picture.is-large{
+            width: 200px;
+        }
+
         img{
             box-shadow: 0 0 15px #999;
             border-radius: 50%;
-            width: 100px;
+            width: 100%;
         }
 
         img.disabled{
@@ -36,17 +45,25 @@
         const useState = React.useState
 
         const Avatar = props =>{
-            const [enabled, setEnabled] = useState(true)
-
+            const [enabled, setEnabled] = useState(true);
             const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
 
-            const className = enabled ? " " : "disabled"; 
-            
+            let pictureClassName = "";
+            if(props.size === "small"){
+                pictureClassName = "is-small";
+            }else if(props.size === "large"){
+                pictureClassName = "is-large";
+            }
+            const imgClassName = enabled ? "" : "disabled"; 
+
             return(
-            <picture>
+            <picture className={pictureClassName}>
                 <img 
-                    onClick={() => setEnabled(!enabled)}
-                    className={className} 
+                     /*function () es igual a () =>*/
+                    onClick={() => {
+                        setEnabled(!enabled);
+                    }}
+                    className={imgClassName} 
                     src={src}
                     />
                     <strong>{props.name}</strong>   
@@ -57,8 +74,9 @@
 
         ReactDOM.render(
             <div>
-                <Avatar id={10} name="Ana"/>
-                <Avatar id={11} name="JSXLady"/>    
+                <Avatar id={10} name="Ana" size="small"/>
+                <Avatar id={11} name="JSXLady"/> 
+                <Avatar id={12} name="Rodriguez" size="large"/> 
             </div>
             ,$app
         );
