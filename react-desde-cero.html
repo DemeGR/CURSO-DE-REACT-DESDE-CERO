@@ -22,12 +22,27 @@
             opacity: 0.3;
         }
     </style>
+    <!-- Corel de React-Libreria de react - conceptos y su motor -->
+     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+     <!-- React DOM tiene todo el codigo para que ract funcione en le navegador -->
+       <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 </head>
 <body>
     <h1>Women in Tech</h1>
     <div id="app"></div>
     <script>
         const  $app = document.getElementById("app");
+        const h = React.createElement
+
+        const Avatar = params =>{
+            const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
+
+            return h('img',{src})
+        }
+
+        
+
+    /*
         const Avatar = params => {
         const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
 
@@ -46,7 +61,7 @@
             img.addEventListener('click',() => {
                 img.classList.toggle('disabled')
             })
-        })
+        })*/
     </script>
 </body>
 
