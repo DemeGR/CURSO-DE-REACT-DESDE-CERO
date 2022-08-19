@@ -38,29 +38,23 @@
         const Avatar = params =>{
             const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
 
-            //return h('img',{src})
-            return <img src={src} />/*Va a rendererizar como lo hace el codigo en la linea 41*/
-        }
+            return(
+            <picture>
+                <img src={src} />
+                <strong>{params.name}</strong>   
+            </picture>
+            );
 
-        ReactDOM.render(
-        
-        h("div", null,[h(Avatar,{id : 1}),h(Avatar,{id:2})]), $app);
-
-    /*
-        const Avatar = params => {
-        const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
-
-        return `<picture>
-            <img src="${src}" />
-            <em> ${params.name}</em>
-        </picture>
-        `;
-        
         };
 
-        $app.innerHTML += Avatar({id:5,name:"Andrea"});
-        $app.innerHTML += Avatar({id:6,name:"Manuela"});
-    
+        ReactDOM.render(
+            <div>
+                <Avatar id={10} name="Ana"/>
+                <Avatar id={11} name="JSXLady"/>    
+            </div>
+            ,$app
+        );
+    /*
         $app.querySelectorAll('img').forEach(img =>{
             img.addEventListener('click',() => {
                 img.classList.toggle('disabled')
