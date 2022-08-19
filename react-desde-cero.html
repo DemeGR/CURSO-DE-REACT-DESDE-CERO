@@ -26,11 +26,12 @@
      <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
      <!-- React DOM tiene todo el codigo para que ract funcione en le navegador -->
        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+       <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <h1>Women in Tech</h1>
     <div id="app"></div>
-    <script>
+    <script type="text/babel">
         const  $app = document.getElementById("app");
         const h = React.createElement
 
@@ -40,7 +41,9 @@
             return h('img',{src})
         }
 
-        ReactDOM.render(h(Avatar,{id : 1}), $app);
+        ReactDOM.render(
+        
+        h("div", null,[h(Avatar,{id : 1}),h(Avatar,{id:2})]), $app);
 
     /*
         const Avatar = params => {
