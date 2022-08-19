@@ -17,20 +17,37 @@
             border-radius: 50%;
             width: 100px;
         }
+
+        img.disabled{
+            opacity: 0.3;
+        }
     </style>
 </head>
 <body>
-    <h1>Women in Teach</h1>
-    <picture>
-        <img src="https://randomuser.me/api/portraits/women/2.jpg">
-        Linda
-    </pcture>
+    <h1>Women in Tech</h1>
+    <div id="app"></div>
+    <script>
+        const  $app = document.getElementById("app");
+        const Avatar = params => {
+        const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
+
+        return `<picture>
+            <img src="${src}" />
+            <em> ${params.name}</em>
+        </picture>
+        `;
+        
+        };
+
+        $app.innerHTML += Avatar({id:5,name:"Andrea"});
+        $app.innerHTML += Avatar({id:6,name:"Manuela"});
     
-    <picture>
-        <img src="https://randomuser.me/api/portraits/women/1.jpg">
-        Daniela
-    </pcture>
-    
+        $app.querySelectorAll('img').forEach(img =>{
+            img.addEventListener('click',() => {
+                img.classList.toggle('disabled')
+            })
+        })
+    </script>
 </body>
 
 
