@@ -40,7 +40,12 @@
 
             return(
             <picture>
-                <img src={src} />
+                <img 
+                onClick={event =>{
+                    event.target.classList.toggle("disabled");
+                }} 
+                
+                src={src} />
                 <strong>{params.name}</strong>   
             </picture>
             );
