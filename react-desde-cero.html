@@ -33,9 +33,9 @@
     <div id="app"></div>
     <script type="text/babel">
         const  $app = document.getElementById("app");
-        const h = React.createElement
+        const useState = React.useState(true)
 
-        const Avatar = params =>{
+        const Avatar = props =>{
             const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
 
             return(
