@@ -40,10 +40,16 @@
 
             const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
 
+            const className = enabled ? " " : "disabled"; 
+            
             return(
             <picture>
-                <img className={'disabled'} src={src} />
-                <strong>{props.name}</strong>   
+                <img 
+                    onClick={() => setEnabled(!enabled)}
+                    className={className} 
+                    src={src}
+                    />
+                    <strong>{props.name}</strong>   
             </picture>
             );
 
