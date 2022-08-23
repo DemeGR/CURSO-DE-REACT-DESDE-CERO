@@ -12,9 +12,11 @@ function App() {
     fetch(apiURL)
       .then(res => res.json())//de la respuesta convertirla como ojson
       .then(response => {
-        const {data} = response
+        const {data/*es un array */=[]} = response
+        if(Array.isArray(data))  {  
         const gifs = data.map(image => image.images.downsized_medium.url)
         setGifs(gifs)
+      }
       })
       
   },[]/*dependencias */)//se ejecuta solo una vez porque no tiene dependencias
