@@ -1,19 +1,22 @@
 import React,{useEffect,useState} from 'react';
 import './App.css';
 
-const GIFS = ['https://media1.giphy.com/media/xThuWdQdTh6C0BaBc4/giphy.webp?cid=ecf05e47dfgyr65hdrygsrhi5zwtmpuaguew6nmdpamo4idn&rid=giphy.webp&ct=g','https://media3.giphy.com/media/10Semkr8IesDe0/giphy.webp?cid=ecf05e47qs733uu5z36trjlyurvn4v1zwvrwmddu1cpfuvs2&rid=giphy.webp&ct=g'
-]
-
-const DIREFFERENT_GITS = [
-  'https://media3.giphy.com/media/l0MYOwS7JDddcyo3m/200w.webp?cid=ecf05e47ps0ezjez2osp2z6b7ncp04iw2eoq02fwv701rau8&rid=200w.webp&ct=g'
-]
+const apiURL = 'https://api.giphy.com/v1/gifs/search?api_key=sOwBV2wN7m3pdBD9wDe5cJY5AMHVEVA8&q=pandas&limit=25&offset=0&rating=g&lang=en'
 
 function App() {
-  const [gifs, setGifs] = useState(GIFS)
+  const [gifs, setGifs] = useState([])
+
 
   useEffect(function (){//solo con centrarce cambiara los gifs sin necesidad de un boton 
     console.log('actualizando los gifs')
-    setGifs(DIREFFERENT_GITS)
+    fetch(apiURL)
+      .then(res => res.json())//de la respuesta convertirla como ojson
+      .then(response => {
+        const {data} = response
+        const gifs = data.map(image => image.images.downsized_medium.url)
+        setGifs(gifs)
+      })
+      
   },[]/*dependencias */)//se ejecuta solo una vez porque no tiene dependencias
   
   return (
@@ -22,7 +25,6 @@ function App() {
       {
         gifs.map(singleGif => <img src={singleGif}/> )
       } 
-      <button onClick={() => setGifs(DIREFFERENT_GITS)}> Cambiar gifs </button>
       </section>
     </div>
   );
