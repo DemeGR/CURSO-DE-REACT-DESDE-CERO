@@ -8,7 +8,7 @@ export default function ListOfGifs({keyword}){
     useEffect(function (){//En l aprimera renderizacion se llama a keyword 
         getGifs({keyword})
         .then(gifs => setGifs(gifs))
-       },[]/*dependencias */)//se ejecuta solo 
+       },[keyword]/*dependencias */)// eslin-disable-line 
 
     return gifs.map(({id, title,url}) =>
         <Gif

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import ListOfGifs from './componentes/ListOfGifs';
 
 
 export default function App() {
+  const [keyword, setKeyword] = useState('panda')
+
   return (
     <div className="App">
       <section className="App-content">
-        {
-          <ListOfGifs keyword='japan' />//se hace llama a la API
-        } 
+        <button onClick={() => setKeyword('mapache')}
+        >Cambiar keyword</button>
+        <ListOfGifs keyword={keyword} />
       </section>
     </div>
   );
