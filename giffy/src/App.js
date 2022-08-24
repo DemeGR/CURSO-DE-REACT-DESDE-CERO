@@ -14,11 +14,22 @@ function App() {
   return (
     <div className="App">
       <section className="App-content">
-      {
-        gifs.map(singleGif => 
-          <Gif title={singleGif.title} url={singleGif.url} id={singleGif.id}/>
-        )
-      } 
+        {
+          gifs.map(({id,title,url}) => 
+            <Gif
+              id={id}
+              key={id}
+              title={title}
+              url={url}
+
+              /* hacen lo mismo como los de arriba
+              key={singleGif.id} //siempre debe de tener una id unica
+              title={singleGif.title} 
+              url={singleGif.url} 
+              id={singleGif.id}*/
+            />
+          )
+        } 
       </section>
     </div>
   );
