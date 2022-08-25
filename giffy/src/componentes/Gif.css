@@ -7,7 +7,7 @@
     text-decoration: none;
     margin: 16px;
     padding: 32px;
-   width: 50%;
+   width: 100%;
     
 }
 
@@ -17,4 +17,8 @@
 
 .Gif img{
     object-fit: contain;
+}
+
+i{
+    font-size: 80px;
 }
