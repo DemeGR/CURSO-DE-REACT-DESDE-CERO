@@ -3,6 +3,7 @@ import './App.css'
 import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
+import StaticContext from './Context/StaticContext'
 
 import {Link,Route} from 'wouter'
 
