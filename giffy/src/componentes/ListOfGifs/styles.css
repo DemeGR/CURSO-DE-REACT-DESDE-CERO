@@ -1,5 +1,5 @@
 :root{
-    --results-columns:2;
+    --results-columns: 2;
 }
 
 .ListOfGifs{
@@ -13,7 +13,7 @@
     break-inside: avoid;
     background-color: rgb(163, 241, 18);
     display: inline-block;
-    width: 50%;
+    width: 100%;
 }
 
 @media(min-width:600px){

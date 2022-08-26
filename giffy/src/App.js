@@ -11,7 +11,7 @@ export default function App() {
     <div className="App">
       <section className="App-content">
        <Link to="/"> 
-        <img className="App-logo" alt = 'Giffy logo' src = '/logo.jpg' />
+        <img className="App-logo" alt = 'Giffy logo' src = '/logo.' />
        </Link>
        <Route
           component={Home}
