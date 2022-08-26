@@ -12,13 +12,14 @@
   font-size: calc(10px + 2vmin);
   padding: 16px;
   color: white;
+  
 }
 
 button{
-  font-size: 48px; 
+  font-size: 15px; 
 }
 
 a{
   color: #09f;
-  font-size: 42px;
+  
 }
