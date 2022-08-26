@@ -1,29 +1,32 @@
-import React, {useState} from 'react';
-import './App.css';
-import ListOfGifs from './componentes/ListOfGifs';
+import React from 'react'
+import './App.css'
+import Home from './pages/Home'
+import SearchResults from './pages/SearchResults'
+import Detail from './pages/Detail'
 
-import {Link,Route/*Para saber que rusta tinen nuestrs api */ } from "wouter";
+import {Link,Route} from "wouter"
 
 export default function App() {
   return (
     <div className="App">
-      <section 
-      className="App-content">
-       <h1>App</h1>
-       <Link to='/gif/panda'>Gifs de 
-       pandas</Link>
-       <Link to='/gif/Ecuador'>Gifs de 
-       Ecuador</Link>
-       <Link to='/gif/Chile'>Gifs de 
-       Chile</Link>
-       <Link to='/gif/Mexico'>Gifs de 
-       Mexico</Link>
+      <section className="App-content">
+       <Link to="/"> 
+        <img className="App-logo" alt = 'Giffy logo' src = '/logo.jpg' />
+       </Link>
        <Route
-          component = {ListOfGifs}
-          path="/gif/:keyword" />
+          component={Home}
+          path="/"
+       />
+       <Route
+          component={SearchResults}
+          path="/search/:keyword" />
+        <Route
+          component={Detail}
+          path="/gif/:id"
+        />
       </section>
     </div>
-  );
+  )
 }
 
 //export default App;
