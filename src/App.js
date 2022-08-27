@@ -9,8 +9,10 @@ import {Link,Route} from 'wouter'
 
 export default function App() {
   return (
-    <StaticContext.Provider value={{name:'midudev',
-    suscribeteAlCanal: true }}>
+    <StaticContext.Provider 
+      value={{name:'midudev',
+      suscribeteAlCanal: true }}
+    >
       <div className="App">
         <section className="App-content">
         <Link to="/"> 
