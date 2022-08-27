@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
-import GifsContext from '../../Context/GifsContext'
 import Gif from '../../componentes/Gif'
- 
+import useGlobalGifs from '../../hooks/useGlobalGifs'
+
 export default function Detail({params}){
-    const {gifs} = useContext(GifsContext)
+    const gifs = useGlobalGifs()
    
 
     const gif = gifs.find(singleGif =>
