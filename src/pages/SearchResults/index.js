@@ -6,9 +6,11 @@ import { useGifs } from 'hooks/useGifs';
 export default function SearchResults({params}){
 
     const {keyword} = params
-    const {loading, gifs} = useGifs({
+    const {loading, gifs, setPage} = useGifs({
         keyword})//se inicia el estado en falso
-   
+    
+    const handleNextPage = () => setPage(prevPage => prevPage + 1)
+
     return <>
         {loading// si carga ,se muestra el spinner. 
         //Si no se muestda lalista de  gifs
@@ -19,5 +21,7 @@ export default function SearchResults({params}){
                 <ListOfGifs gifs={gifs} />
             </>
         }
+        <br/>
+        <button onClick = {handleNextPage}>Get next page</button>
     </>
 }
