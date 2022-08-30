@@ -1,7 +1,7 @@
 import React from 'react';
-import Spinner  from '../../componentes/Spinner';
-import ListOfGifs from '../../componentes/ListOfGifs';
-import { useGifs } from '../../hooks/useGifs';
+import Spinner  from 'componentes/Spinner';
+import ListOfGifs from 'componentes/ListOfGifs';
+import { useGifs } from 'hooks/useGifs';
 
 export default function SearchResults({params}){
 
