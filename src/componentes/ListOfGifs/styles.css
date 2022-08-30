@@ -5,11 +5,12 @@
 .ListOfGifs{
     display: grid;
     min-height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     
 }
 
 .ListOfGifs-item{
-  
+    
     background-color: rgb(163, 241, 18);
     display: inline-block;
     width: 100%;
