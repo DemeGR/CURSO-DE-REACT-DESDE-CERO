@@ -3,6 +3,7 @@ import Spinner  from 'componentes/Spinner';
 import ListOfGifs from 'componentes/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
+import debounce from 'just-debounce-it'
 
 export default function SearchResults({params}){
 
@@ -13,12 +14,17 @@ export default function SearchResults({params}){
     const {isNearScreen} = useNearScreen({externalRef: loading ? null: externalRef})
     //const handleNextPage = () => setPage(prevPage => prevPage + 1)
     
+    const debounceHandleNextPage = useRef()
     console.log(isNearScreen)//ver si se esta detetando correctamente cuando ese elemento esta acerca de l apantalla
 
     const handleNextPage =() => console.log('next page')
     
+     debounceHandleNextPage.current = () => debounce(/*Parametros: funcion y tiempo de espera en ms */
+        () => console.log('next page'), 1000
+    )
+
     useEffect(function(){
-        if(isNearScreen) handleNextPage()
+        if(isNearScreen) debounceHandleNextPage.current()
     })
 
 
