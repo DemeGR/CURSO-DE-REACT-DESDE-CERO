@@ -5,18 +5,26 @@
 .ListOfGifs{
     display: grid;
     min-height: 100vh;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(auto-fit,300px);/**/
     gap: 0px 16px;
 }
 
 .ListOfGifs-item{
     
-    background-color: rgb(163, 241, 18);
-    display: inline-block;
-    width: 100%;
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  
+  break-inside: avoid; /* IE 10+ */
+  
+  background-color: #eee;
+  
+  display: inline-block;
+  
+  width: 100%;
+ 
 }
 
-@media(min-width:600px){
+@media(min-width: 600px){
     :root{
         --results-columns:3;
     }
