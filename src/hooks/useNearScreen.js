@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 
-export default function useNearScreen({distance = '100px',externalRef }={}){
+export default function useNearScreen({distance = '100px',externalRef, once = true }={}){
     //si el elemento que le hemos pasaso por parametro esta cerca
     const [isNearScreen, setShow] = useState(false)
     const fromRef = useRef()
@@ -15,7 +15,9 @@ export default function useNearScreen({distance = '100px',externalRef }={}){
             console.log(el.isIntersecting/*observa cualquier cambio */)
             if(el.isIntersecting){
                 setShow(true)
-                observer.disconnect()
+                once && observer.disconnect()
+            }else{
+                !once && setShow(false)
             }
         }
 

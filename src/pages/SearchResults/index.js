@@ -1,4 +1,4 @@
-import React,{useEffect, useRef} from 'react';
+import React,{useCallback, useEffect, useRef} from 'react';
 import Spinner  from 'componentes/Spinner';
 import ListOfGifs from 'componentes/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
@@ -11,21 +11,19 @@ export default function SearchResults({params}){
     const {loading, gifs, setPage} = useGifs({
         keyword})//se inicia el estado en falso
     const externalRef = useRef()    
-    const {isNearScreen} = useNearScreen({externalRef: loading ? null: externalRef})
+    const {isNearScreen} = useNearScreen({
+        externalRef: loading ? null: externalRef, once: false})
     //const handleNextPage = () => setPage(prevPage => prevPage + 1)
     
-    const debounceHandleNextPage = useRef()
+    const debounceHandleNextPage = useCallback(debounce(
+        () => setPage(prevPage => prevPage + 1), 200
+    ), [])
     console.log(isNearScreen)//ver si se esta detetando correctamente cuando ese elemento esta acerca de l apantalla
 
-    const handleNextPage =() => console.log('next page')
-    
-     debounceHandleNextPage.current = () => debounce(/*Parametros: funcion y tiempo de espera en ms */
-        () => console.log('next page'), 1000
-    )
-
     useEffect(function(){
-        if(isNearScreen) debounceHandleNextPage.current()
-    })
+        console.log(isNearScreen)
+        if(isNearScreen) debounceHandleNextPage()
+    }, [debounceHandleNextPage, isNearScreen])
 
 
     return <>
