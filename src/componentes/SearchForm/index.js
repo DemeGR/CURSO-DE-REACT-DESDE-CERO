@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-export default function SearchForm({onSubmit})/*Funcion que se ejecutara cuando se haga submit con el boton o enter*/ {
+function SearchForm({onSubmit})/*Funcion que se ejecutara cuando se haga submit con el boton o enter*/ {
     const [keyword, setKeyword] = useState('')
 
     const handleSubmit = evt => {
@@ -20,3 +20,5 @@ export default function SearchForm({onSubmit})/*Funcion que se ejecutara cuando 
         </form>    
     )
 }
+
+export default React.memo(SearchForm)

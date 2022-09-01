@@ -11,12 +11,12 @@ export default function Home(){
 
     const {loading, gifs} = useGifs()
 
-    const handleSubmit = /*guardar esta funcion  a no ser que cambien las dependencias*/useCallback(({keyword}) => {
+    const handleSubmit = /*guardar esta funcion  a no ser que cambien las dependencias*/({keyword}) => {
        
         //navegar a otra ruta
         pushLocation(  `/search/${keyword}`)
         /* */
-    },[pushLocation/*cada ves que cambia, crea la funcion handleSubmit*/]/*dependencias */)
+    }
 
     return(
         <>
