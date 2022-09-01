@@ -9,5 +9,5 @@ export default function TrendingSearches(){
         getTrendingTerms().then(setTrends)
     },[])
 
-    return <Category name='Tendencias' options={trends}/>
+    return <Category name='Trendingsver' options={trends}/>
 }
