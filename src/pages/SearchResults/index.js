@@ -5,7 +5,7 @@ import { useGifs } from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
 import debounce from 'just-debounce-it'
 import useTitle from 'hooks/useSEO';
-
+import {Helmet} from 'react-helmet'
 
 export default function SearchResults({params}){
 
@@ -18,7 +18,7 @@ export default function SearchResults({params}){
     //const handleNextPage = () => setPage(prevPage => prevPage + 1)
     
     const title = gifs ? `${gifs.length} resultados de ${keyword}`:''
-    useTitle({title})
+    
 
     const debounceHandleNextPage = useCallback(debounce(
         () => setPage(prevPage => prevPage + 1), 200
@@ -35,11 +35,19 @@ export default function SearchResults({params}){
         {loading// si carga ,se muestra el spinner. 
         //Si no se muestda lalista de  gifs
             ? <Spinner/>
-            :<> 
-                <h3 className="App-title">{decodeURI}
+            :<>
+                <Helmet>
+                    <title>{title}</title>
+                    <meta name="description" content={title}></meta>
+                    <meta name="rating"
+                    content = "Gneral" />
+                </Helmet>
+                <div className="App-arapper">
+                <h3 className="App-title">               {decodeURI}
                 {(keyword)}</h3>
                 <ListOfGifs gifs={gifs} />
                 <div id="visor" ref={externalRef}></div>
+                </div>
             </>
         }
     </>
