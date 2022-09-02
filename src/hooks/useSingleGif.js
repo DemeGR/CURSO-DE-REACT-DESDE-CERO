@@ -10,15 +10,25 @@ export default function useSingleGif({id}){
     
         //la unica forma de que cabie de estado es pasandole setGif
     const[gif, setGif] = useState(gitFromCache)
+    const[isLoading, setIsLoading] = useState(false)
+    const [isError, setIsError] = useState(false)
     
     
     useEffect(function(){
         if(!gif){
+            setIsLoading(true)
             getSingleGif({id/*objeto */}/*para que funciones  */)
-                .then(setGif)
+                .then(gif => {
+                    setGif(gif)
+                    setIsLoading(false)
+                    setIsError(false)
+                }).catch(err => {
+                    setIsLoading(false)
+                    setIsError(true)
+                })
                 
         }
     },[gif, id])
 
-    return {gif}
+    return {gif, isLoading, isError}
 }
