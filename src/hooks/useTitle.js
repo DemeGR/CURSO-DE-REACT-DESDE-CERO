@@ -1,5 +1,11 @@
-//import {useEffect} from useTitle ({title}){}
+import {useEffect, useRef} from 'react'
 
 export default function useTitle({title}){
-    document.title = `${title} | Giffy`
+    const prevTitle = useRef(document.title)
+
+    useEffect(() => {
+        const previousTitle = prevTitle.current
+        document.title = `${title} | Giffy`
+        return() => document.title = previousTitle
+    },[title])    
 }

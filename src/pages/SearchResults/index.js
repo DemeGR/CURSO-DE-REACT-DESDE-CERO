@@ -4,6 +4,8 @@ import ListOfGifs from 'componentes/ListOfGifs';
 import { useGifs } from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
 import debounce from 'just-debounce-it'
+import useTitle from 'hooks/useTitle';
+
 
 export default function SearchResults({params}){
 
@@ -15,6 +17,9 @@ export default function SearchResults({params}){
         externalRef: loading ? null: externalRef, once: false})
     //const handleNextPage = () => setPage(prevPage => prevPage + 1)
     
+    const title = gifs ? `${gifs.length} resultados de ${keyword}`:''
+    useTitle({title})
+
     const debounceHandleNextPage = useCallback(debounce(
         () => setPage(prevPage => prevPage + 1), 200
     ), [])
