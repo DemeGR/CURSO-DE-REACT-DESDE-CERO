@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Redirect} from 'wouter'
 import Gif from 'componentes/Gif'
 import useSingleGif from 'hooks/useSingleGif'
 import Spinner from 'componentes/Spinner'
@@ -8,7 +8,7 @@ export default function Detail({params}){
     const {gif,isLoading,isError} = useSingleGif({id: params.id})
    
     if(isLoading) return <Spinner/>
-    
+    if(isError) return <Redirect to= '404'/>//si hay un error lo direccionas al 404
     if(!gif) return null
 
     return <>
