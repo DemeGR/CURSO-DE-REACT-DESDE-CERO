@@ -1,12 +1,15 @@
-import React from 'react'
+import React,{Suspense} from 'react'
 import './App.css'
-import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
 import StaticContext from './Context/StaticContext'
+//import logo from 'logo.jpg' 
 
 import {Link,Route} from 'wouter'
 import { GifsContextProvider } from './Context/GifsContext'
+
+const HomePage = React.lazy(() => import('./pages/Home')
+)
 
 export default function App() {
   return (
@@ -15,13 +18,18 @@ export default function App() {
       suscribeteAlCanal: true }}
     >
       <div className="App">
+        <Suspense fallback={null}>
         <section className="App-content">
         <Link to="/"> 
-          <img className="App-logo" alt = 'Giffy logo' src = '/logo.svg' />
+
+          <figure className="App-logo">
+              <img alt='Giffy logo' src='logo'/*{logo} para agregar una imagen */ />
+             
+            </figure>
         </Link>
         <GifsContextProvider>
           <Route
-              component={Home}
+              component={HomePage}
               path="/"
           />
           <Route
@@ -31,8 +39,14 @@ export default function App() {
               component={Detail}
               path="/gif/:id"
             />
+          <Route
+              component={() => <h1>404 ERROR :(</h1>}
+              path="/404"
+            />  
+
           </GifsContextProvider>
         </section>
+        </Suspense>
       </div>
     </StaticContext.Provider>
   )

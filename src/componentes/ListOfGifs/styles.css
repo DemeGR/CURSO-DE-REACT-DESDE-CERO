@@ -3,20 +3,32 @@
 }
 
 .ListOfGifs{
-    column-count: var(--results-columns);
-    column-gap: .5em;
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(auto-fit,minmax( 100px,300px));/*efine un rango de tamaño mayor o igual que min y menor o igual que max. Se emplea con rejillas CSS.
+    
+    */
+    gap: 0px 16px;
+    align-items: center;
+    grid-template-rows: masonry;
 }
 
 .ListOfGifs-item{
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    background-color: rgb(163, 241, 18);
-    display: inline-block;
-    width: 100%;
+    
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  
+  break-inside: avoid; /* IE 10+ */
+  
+  background-color: #eee;
+  
+  display: inline-block;
+  
+  width: 100%;
+ 
 }
 
-@media(min-width:600px){
+@media(min-width: 600px){
     :root{
         --results-columns:3;
     }
