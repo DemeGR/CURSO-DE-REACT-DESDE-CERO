@@ -44,7 +44,7 @@ export default function SearchResults({params}){
                     content = "Gneral" />
                 </Helmet>
                 <header className="o-header">
-                    <SearchForm/>
+                    <SearchForm initialkeyword={keyword} initialRating ={rating}/>
                 </header>
                 <div className="App-arapper">
                 <h3 className="App-title">               {decodeURI}
