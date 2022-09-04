@@ -15,12 +15,18 @@ export default function SearchForm({initialkeyword='',initialRating='g'})/*Funci
         pushLocation(  `/search/${keyword}/${rating}`);
         
     }
-
-    const handleChange = (evt) =>{
-        setKeyword(evt.target.value)
+   ////se atualian los datos de forma imperativa. No es muy valido.
+    const updateKeyword = (keyword) =>{
+        setKeyword(keyword)
         setTimes(times + 1)
     }
 
+
+    const handleChange = (evt) =>{
+        updateKeyword(evt.target.value)
+        setTimes(times + 1)
+    }
+ ////
     const handleChangeRating = (evt) => (
         setRating(evt.target.value)
         
