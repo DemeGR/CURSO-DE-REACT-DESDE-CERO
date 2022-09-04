@@ -12,7 +12,7 @@ export default function SearchResults({params}){
 
     const {keyword,rating ='g'} = params
     const {loading, gifs, setPage} = useGifs({
-        keyword})//se inicia el estado en falso
+        keyword,rating})//se inicia el estado en falso
     const externalRef = useRef()    
     const {isNearScreen} = useNearScreen({
         externalRef: loading ? null: externalRef, once: false})
