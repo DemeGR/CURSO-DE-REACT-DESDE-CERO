@@ -6,6 +6,7 @@ import useNearScreen from 'hooks/useNearScreen';
 import debounce from 'just-debounce-it'
 import useTitle from 'hooks/useSEO';
 import {Helmet} from 'react-helmet'
+import SearchForm from 'componentes/SearchForm';
 
 export default function SearchResults({params}){
 
@@ -42,6 +43,9 @@ export default function SearchResults({params}){
                     <meta name="rating"
                     content = "Gneral" />
                 </Helmet>
+                <header className="o-header">
+                    <SearchForm/>
+                </header>
                 <div className="App-arapper">
                 <h3 className="App-title">               {decodeURI}
                 {(keyword)}</h3>
