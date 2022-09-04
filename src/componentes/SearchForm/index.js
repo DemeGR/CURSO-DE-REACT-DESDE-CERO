@@ -3,21 +3,30 @@ import {useLocation } from "wouter"
 
 const RATINGS = ['g','pg','pg-13','r'];
 
+const ACTIONS = {//Una mejor practica es evitar pasar manualmente un string
+    //el string que se le asigna no importan, lo unico necesario es que sean diferentes
+    UPDATE_KEYWORD:'update_keyword',
+    UPDATE_RATING:'update_rating'
+}
+
 const reducer=(state,action) => {
-   if(action.type === 'update_keyword') 
-    { return {
-            ...state,
-            keyword:action.payload,
-            times:state.times +1
-        }
-    } else if(action.type === 'update_rating'){
-        return{
-            ...state,
-            rating: action.payload
-        }
+    switch (action.type) {
+        case ACTIONS.UPDATE_KEYWORD:
+            return {
+                ...state,
+                keyword:action.payload,
+                times:state.times +1
+            }
+            
+        case ACTIONS.UPDATE_KEYWORD:
+            return{
+                ...state,
+                rating: action.payload
+            }
+
+         default:
+            return state  
     }
- 
- return state
 }
 
 export default function SearchForm({initialKeyword='',initialRating='g'})/*Funcion que se ejecutara cuando se haga submit con el boton o enter*/ {
@@ -39,11 +48,11 @@ export default function SearchForm({initialKeyword='',initialRating='g'})/*Funci
     };
   
     const handleChange = (evt) =>{
-        dispatch({type: 'update_keyword',payload: evt.target.value})
+        dispatch({type: ACTIONS.UPDATE_KEYWORD,payload: evt.target.value})
     }
  
     const handleChangeRating = (evt) => (
-        dispatch({type: 'update_rating',payload: evt.target.value})
+        dispatch({type: ACTIONS.UPDATE_KEYWORD,payload: evt.target.value})
     )
 
     return(//
