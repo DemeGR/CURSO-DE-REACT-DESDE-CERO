@@ -10,7 +10,7 @@ import SearchForm from 'componentes/SearchForm';
 
 export default function SearchResults({params}){
 
-    const {keyword} = params
+    const {keyword,rating ='g'} = params
     const {loading, gifs, setPage} = useGifs({
         keyword})//se inicia el estado en falso
     const externalRef = useRef()    

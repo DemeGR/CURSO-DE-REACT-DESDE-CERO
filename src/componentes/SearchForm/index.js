@@ -12,7 +12,7 @@ export default function SearchForm()/*Funcion que se ejecutara cuando se haga su
     const handleSubmit = evt => {
         evt.preventDefault()//para evitar que aga su comportamiketnoo por defecto
         //navegar a otra ruta
-        pushLocation(  `/search/${keyword}`)
+        pushLocation(  `/search/${keyword}/${rating}`);
         
     }
 
