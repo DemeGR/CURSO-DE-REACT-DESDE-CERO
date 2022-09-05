@@ -3,6 +3,7 @@ import {Link,Route,Switch} from 'wouter'
 
 import Header from 'componentes/Header'
 
+import Login from 'pages/Login'
 import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
 import StaticContext from './Context/StaticContext'
@@ -33,22 +34,24 @@ export default function App() {
             </figure>
         </Link>
         <GifsContextProvider>
-          <Route
-              component={HomePage}
-              path="/"
-          />
-          <Route
-              component={SearchResults}
-              path="/search/:keyword/:rating?" />
-          <Route
-              component={Detail}
-              path="/gif/:id"
-            />
-          <Route
-              component={() => <h1>404 ERROR :(</h1>}
-              path="/404"
-            />  
-
+          <Switch>
+                <Route
+                    component={HomePage}
+                    path="/"
+                />
+                <Route
+                    component={SearchResults}
+                    path="/search/:keyword/:rating?" />
+                <Route
+                    component={Detail}
+                    path="/gif/:id"
+                  />
+                <Route
+                    component={Login}
+                    path="/login"
+                  />  
+                
+          </Switch>
           </GifsContextProvider>
         </section>
         </Suspense>
