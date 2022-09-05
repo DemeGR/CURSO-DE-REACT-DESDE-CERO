@@ -1,13 +1,18 @@
-import React, {useState,useEffect} from "react";
-import getTrendingTerms from "services/getTrendingTermsService";
-import Category from "componentes/Category";
+import React, { useState, useEffect } from 'react'
+import getTrendingTerms from 'services/getTrendingTermsService'
+import Category from 'componentes/Category'
 
-export default function TrendingSearches(){
-    const [trends, setTrends] = useState([])
+export default function TrendingSearches () {
+  const [trends, setTrends] = useState([])
 
-    useEffect(function(){
-        getTrendingTerms().then(setTrends)
-    },[])
+  useEffect(function () {
+    const controller = new AbortController()
+    getTrendingTerms({signal: controller.signal})
+      .then(setTrends)
+      .catch(err => {})
+  
+    return () => controller.abort()
+  }, [])
 
-    return <Category name='Trendingsver' options={trends}/>
+  return <Category name='Tendencias' options={trends} />
 }
